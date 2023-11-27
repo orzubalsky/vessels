@@ -1,0 +1,20 @@
+<%- include ('layouts/base-open.ejs') %>
+<header>
+  <%- include('partials/header') %>
+  <%- include('partials/connect') %>
+  <nav>
+    <%- include('partials/nav-setup') %>
+  </nav>
+</header>
+<main>
+  <section id="list">
+    <%- include('sections/question-list') %>
+  </section>
+  <section id="add" class="active">
+    <%- include('sections/question-add') %>
+  </section>
+  <section id="about">
+    <%- include('sections/about') %>
+  </section>
+</main>
+<%- include('layouts/base-close.ejs') %>

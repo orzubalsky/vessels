@@ -1,0 +1,16 @@
+{
+  "name": "app-seed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/seed.js",
+  "type":"module",
+  "scripts": {
+    "setup": "node src/seed.js ../output && node src/utils/createInitialQuestionRecords.js ../output",
+    "seed": "node src/seed.js ../output",
+    "questions": "node src/utils/createInitialQuestionRecords.js ../output",
+    "redact": "node src/utils/createRedactedMirror.js ../output",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

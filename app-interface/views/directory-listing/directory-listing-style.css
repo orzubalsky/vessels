@@ -1,0 +1,183 @@
+.directory-breadcrumbs--hidden {
+  display: none;
+}
+
+.directory ul li {
+  list-style: none;
+}
+
+.directory ul li:hover {
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.directory ul li .path {
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.directory ul li .line {
+  padding-right: 5px;
+  font-style: italic;
+}
+
+.directory ul li:first-child .path {
+  padding-left: 0;
+}
+
+.directory a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.directory a:hover {
+  color: var(--color-accent);
+}
+
+.directory ul#files {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.directory ul#files li {
+  margin: 0;
+  border-top: 0.5px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+.directory ul#files li:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.directory ul#files li:last-child:hover {
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.directory ul#files li a {
+  background: var(--color-background);
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.directory ul#files li:focus,
+.directory ul#files li:hover {
+  background: var(--color-background);
+  border-top: 0.5px solid var(--color-accent);
+  border-bottom: 0.5px solid var(--color-accent);
+  border-left: 1px solid var(--color-accent);
+  border-right: 1px solid var(--color-accent);
+}
+
+.directory #files span {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-indent: 10px;
+}
+
+.directory #files .name {
+  display: flex;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+
+.directory #files .icon .name {
+  text-indent: 40px;
+  width: 100%;
+  height: 100%;
+}
+
+#files .icon-directory .name {
+  background-image: url('/images/folder_red.png') !important;
+}
+
+.directory .view-tiles .name {
+  width: 100%;
+  background-position: 8px 5px;
+}
+
+.directory .size,
+.directory .date {
+  display: none !important;
+}
+
+.directory ul#files.view-details li {
+  display: flex;
+  width: 100%;
+  height: calc(var(--layout-padding) * 2);
+}
+
+.directory ul#files.view-details li.header {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-weight: bold;
+  border-top: 1px solid var(--color-border);
+}
+
+.directory ul#files.view-details li.header:hover {
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  cursor: default;
+}
+
+.directory .view-details .name {
+  width: 100%;
+  background-position: 8px 5px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .directory ul#files {
+    border-top: 1px solid #cacaca;
+  }
+
+  .directory ul#files li {
+    width: auto !important;
+    display: block;
+    text-indent: 0;
+    margin: 0;
+  }
+
+  .directory ul#files li:nth-child(odd) {
+    background: var(--color-background);
+  }
+
+  .directory ul#files li a {
+    height: auto;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    width: 100%;
+    padding: 2px 8px;
+  }
+
+  .directory ul#files li a:focus,
+  .directory ul#files li a:hover {
+    border: 0;
+  }
+
+  .directory #files .header,
+  .directory #files .size,
+  .directory #files .date {
+    display: none !important;
+  }
+
+  .directory #files .name {
+    display: inline-block;
+    width: 100%;
+    text-indent: 0;
+    background-position: 0 50%;
+  }
+  .directory #files .icon .name {
+    text-indent: 41px;
+    width: 100%;
+    height: 100%;
+  }
+}

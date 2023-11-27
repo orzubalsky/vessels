@@ -1,0 +1,11 @@
+<pre class="directory-breadcrumbs directory-breadcrumbs--target"><a href="/#listen">~</a></pre>
+<div class="tags">
+  <% for (const tagName in tagRecords) { %>
+    <a class="tag" href="/directory/<%= tagRecords[tagName].relativePath %>">
+      <pre><%- tagRecords[tagName].relativePathFormatted %></pre>
+    </a>
+  <% } %>
+</div>
+<div class="directory">
+
+</div>

@@ -1,0 +1,13 @@
+<div>
+  <h3>Questions</h3>
+  <div>
+    <% Object.entries(questions).forEach(([tag, questions]) => { %>
+      <div class="tag-question-list">
+        <h4><%= tag %></h4>
+        <% questions.forEach(question => { %>
+          <p><%= question %></p>
+        <% }); %>
+      </div>
+    <% }); %>
+  </div>
+</div>

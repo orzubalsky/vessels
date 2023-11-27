@@ -1,0 +1,24 @@
+<div>
+  <h3>Add Question</h3>
+  <form class="question-form">
+    <div>
+      <label for="tag">
+        Tag
+      </label>
+      <select name="tag">
+        <% tags.forEach(function(tag) { %>
+          <option value="<%= tag %>"><%= tag %></option>
+        <% }); %>
+      </select>
+    </div>
+    <div>
+      <label for="question">
+        Question
+      </label>
+      <div class="textarea-container">
+        <textarea name="question"></textarea>
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>

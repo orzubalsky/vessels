@@ -1,0 +1,52 @@
+-- Define the volume name
+set volumeName to "%VOLUME_PATH%"
+
+-- Define the name of the launch agent plist directory
+set plistPath to "%LOCAL_VESSEL_APP_DIR%"
+
+-- Define the name of the launch agent plist file
+set plistFileName to "%LABEL%.plist"
+
+-- Define the target directory for the launch agent plist file (usually ~/Library/LaunchAgents)
+set plistDirectoryUser to (path to home folder as text) & "Library:LaunchAgents"
+
+-- Define the full path to the launch agent plist file
+set plistPathUser to plistDirectoryUser & ":" & plistFileName
+
+try
+	-- Check if the launch agent plist file exists in the user's directory
+	set plistExistsUser to (do shell script "[ -e " & quoted form of POSIX path of plistPathUser & " ] && echo true || echo false")
+
+	-- Log plistPathUser and plistExistsUser
+	-- log "plistPathUser: " & POSIX path of plistPathUser
+	-- log "plistExistsUser: " & plistExistsUser
+
+	if plistExistsUser is "false" then
+		-- Launch agent is not installed, install it
+
+		-- Specify the source path on the vessel
+		set vesselPlistPath to POSIX path of (volumeName & plistPath & "/" & plistFileName)
+
+		-- Specify the destination path in the user's LaunchAgents directory
+		set userPlistPath to plistDirectoryUser & ":" & plistFileName
+
+		-- Log vesselPlistPath and userPlistPath
+		-- log "vesselPlistPath: " & vesselPlistPath
+		-- log "userPlistPath: " & userPlistPath
+
+		-- Copy the launch agent plist file from the vessel to the LaunchAgents directory using cp
+		do shell script "cp " & quoted form of vesselPlistPath & " " & quoted form of userPlistPath
+
+		-- Load the launch agent
+		do shell script "launchctl load " & quoted form of POSIX path of userPlistPath
+
+		-- Notify the user that the launch agent has been installed
+		display dialog "/* Vessels */ installed successfully!"
+	else
+		-- Launch agent is already installed
+		display dialog "/* Vessels */ is already installed."
+	end if
+on error errMsg
+	-- Handle errors
+	display dialog "An error occurred: " & errMsg
+end try

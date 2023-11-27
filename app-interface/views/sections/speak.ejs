@@ -1,0 +1,71 @@
+<div class="question-map">
+  <% questions.forEach(function(question, idx) { %>
+    <a class="question-path" href="#question-<%= idx %>">
+      <pre><%- question.relativePath %></pre>
+    </a>
+  <% }); %>
+</div>
+
+<div class="questions">
+  <% questions.forEach(function(question, idx) { %>
+  <div class="question-item" id="question-<%= idx %>">
+    <form class="contribution-form" action="/api/speak" method="post" enctype="multipart/form-data">
+      <div class="question-prompt">
+        <label for="<%= question.tag %>">
+          <%= question.question %>
+        </label>
+        <input type="hidden" name="tag" value="<%= question.tag %>" />
+      </div>
+      <div class="question-direction">
+        <div>
+          <p>
+            Thank you for considering contributing to /* Vessels */, a platform dedicated to the resilient preservation and dissemination of knowledge. To maintain the quality and integrity of our repository, we encourage contributors to adhere to the following guidelines when submitting information:
+          </p>
+          <ol>
+            <li>
+              <strong>Assume good faith:</strong><br>
+              /* Vessels */ works based on the freedom for people in the network to submit and edit informations. People come here to contribute and share good ideas, stories and knowledges. In cases of disagreement and the need for conversation, /* Vessels */ suggests explanation and dialogue through adding new articles, comments or annotantion after the original article rather than escalating conflicts, and treating others' articles the way your article would want to be treated. It emphasizes patience with each repositors, and discourages making accusations of bad faith without clear evidence.
+            </li>
+            <li>
+              <strong>Be bold:</strong><br>
+              We encourage repositors to take initiative, contribute the stories, knowledge, ideas and make improvements to previous articles without hesitation. It emphasizes the importance of adding information and enhancing the quality of /* Vessels */. While boldness is encouraged, users are also reminded to be careful, especially in sensitive or complex topics.
+            </li>
+            <li>
+              <strong>Community curatorial contribution:</strong><br>
+              We encourage individual in this trusted network to gather curated community material for subjects they are concerned with. /* Vessels */ values information submitted through community discussion. While individuals are crucial for content generation, a trusted community gathering may help build supportive network for censorsored information to be surfaced, identify problems, form a strong body of knowledge, and empower individuals.
+            </li>
+            <li>
+              <strong>Multimedia Elements:</strong><br>
+              We encourage a multimedia library, enhance your contributions by submitting attachment such as images, graphs, videos, 3D models and so on.
+            </li>
+            <li>
+              <strong>Open-source &amp; anonymous:</strong><br>
+              /* Vessels */ is an open-source, open-access libary. We invite repositors to make a positive impact within the valuable offline network. While the /* Vessels */ platform carries censored materials, we strongly advised against using your real names or identifiable nicknames when creating contents, due to the potential for harassment and legal risks.
+            </li>
+            <li>
+              <strong>Spam:</strong><br>
+              Please refrain from spamming the library, articles considered advertisements for a business, product or service, or individuals should be avoid.
+            </li>
+          </ol>
+          <p>
+            <strong>
+              Respond to the question above by uploading a file of any media. You can use a text file, image, audio, code, or anything else).
+              Either make an original file or upload an existing one that feels relevant.
+            </strong>
+          </p>
+          <input class="input-file" type="file" name="file" />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="cancel" type="reset">Cancel</button>
+        <% if (installType == 'demo') { %>
+          <button type="submit" disabled>Submit (disabled)</button>
+        <% } %>
+        <% if (installType !== 'demo') { %>
+          <button type="submit">Submit</button>
+        <% } %>
+      </div>
+    </form>
+  </div>
+  <% }); %>
+</div>
